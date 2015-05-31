@@ -211,36 +211,89 @@ for n in range(1,len(keys)):
     IND = [i for i in New_IND]
 
     ### VOILA! YOU HAVE YOUR IND BACK WITH YOU ###
+
+
+
+    ### WORKING WITH 3G DICT NOW AND CHOOSING A BETTER DICT NAME ###
+    _3gdict = {}
     
-##        
-####    print "3 - Grams"
-####    print "*************************************************************************************************************"
-####    for j in range((len(y)-2)):
-####        store=output[j+2][1]-output[j][1]-len(s[output[j+1][0]])-len(s[output[j][0]])-2
-####        print store
-####        if(store==0):
-####            print s[output[j][0]]
-####            print s[output[j+1][0]]
-####            print s[output[j+2][0]]
-####            
-####        else:
-####            pass
-##
-##        
-####    print "4 - Grams"
-####    print "*************************************************************************************************************"
-####    for j in range((len(y)-3)):
-####        store=output[j+3][1]-output[j][1]-len(s[output[j+2][0]])-len(s[output[j+1][0]])-len(s[output[j][0]])-3
-####        print store
-####        if(store==0):
-####            print s[output[j][0]]
-####            print s[output[j+1][0]]
-####            print s[output[j+2][0]]
-####            print s[output[j+3][0]]
-####            
-####        else:
-####            pass
-##
+    print "3 - Grams"
+    print "*************************************************************************************************************"
+    for j in range((len(y)-2)):
+        store=output[j+2][1]-output[j][1]-len(s[output[j+1][0]])-len(s[output[j][0]])-2
+        #print store
+        if(store==0):
+            keey = s[output[j][0]],s[output[j+1][0]],s[output[j+2][0]]
+            occ = output[j][1]
+            print s[output[j][0]]
+            print s[output[j+1][0]]
+            print s[output[j+2][0]]
+            if keey not in Two_gram_dict.keys():
+                _3gdict[keey]=[occ]
+            else:
+                _3gdict[keey].append(occ)
+            
+        else:
+            pass
+
+    print _3gdict
+    ### NEW LIST OF IND FOR PLOTTING THE 3G WORDS ###
+    New_IND = [i for i in IND]
+    ### TWO GET THE PREVIOUSLY ACCESSED KEY WHILE PLOTTING ###
+    L = IND[-1][0] + 1
+
+    ### TWO CONSTRUCT THE NEWIND BY ADDING THE 3G VALUES ###
+    keeys = _3gdict.keys()
+    for k in keeys:
+        for i in _3gdict[k]:
+            New_IND.append((L,i))
+        L+=1
+    print New_IND
+            
+    IND = [i for i in New_IND]
+
+    ### VOILA! YOU HAVE YOUR IND BACK WITH YOU ###
+
+
+    ### TO APPEND 4G KEYS ###  
+    print "4 - Grams"
+    print "*************************************************************************************************************"
+    _4gdict = {}
+    for j in range((len(y)-3)):
+        store=output[j+3][1]-output[j][1]-len(s[output[j+2][0]])-len(s[output[j+1][0]])-len(s[output[j][0]])-3
+        print store
+        if(store==0):
+            keey = s[output[j][0]],s[output[j+1][0]],s[output[j+2][0]],s[output[j+3][0]]
+            occ = output[j][1]
+            print s[output[j][0]]
+            print s[output[j+1][0]]
+            print s[output[j+2][0]]
+            print s[output[j+3][0]]
+            if keey not in Two_gram_dict.keys():
+                _4gdict[keey]=[occ]
+            else:
+                _4gdict[keey].append(occ)
+            
+        else:
+            pass
+
+    print _4gdict
+    ### NEW LIST OF IND FOR PLOTTING THE 4G WORDS ###
+    New_IND = [i for i in IND]
+    ### TWO GET THE PREVIOUSLY ACCESSED KEY WHILE PLOTTING ###
+    L = IND[-1][0] + 1
+
+    ### TWO CONSTRUCT THE NEWIND BY ADDING THE 4G VALUES ###
+    keeys = _4gdict.keys()
+    for k in keeys:
+        for i in _4gdict[k]:
+            New_IND.append((L,i))
+        L+=1
+    print New_IND
+            
+    IND = [i for i in New_IND]
+
+    ### VOILA! YOU HAVE YOUR IND BACK WITH YOU ###
 
     k = raw_input("Press enter to terminate")
     try:
