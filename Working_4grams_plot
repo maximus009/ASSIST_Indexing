@@ -386,6 +386,7 @@ for n in range(1,len(keys)):
     x4=[]
     y4=[]
     s4=[]
+    
     for i in _4gdict.keys():
         g=str(i[0])+" "+str(i[1])+" "+str(i[2])+" "+str(i[3])
         s4.append(g)
@@ -428,3 +429,4 @@ for n in range(1,len(keys)):
     except SyntaxError:
         pass
    
+###### THE ABOVE CODE RUNS FINE. LET'S BEAUTIFY AND MODULARIZE THE CODE!!! ######
