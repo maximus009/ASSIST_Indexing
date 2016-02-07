@@ -1,5 +1,4 @@
 import matplotlib.pyplot as plt
-import glob
 import collections
 
 dict1={'website': [384, 568, 646, 1209, 15849, 15937, 16293, 16502, 18826, 22352, 22567]
@@ -37,7 +36,9 @@ dict1={'website': [384, 568, 646, 1209, 15849, 15937, 16293, 16502, 18826, 22352
 ,'occupy wall street' : [22591]
 ,'internet search system' : [9822]
 ,'american multinational technology company' : [36]}
+from sys import argv
 
+dict1 = argv[1]
 dict = collections.OrderedDict(sorted(dict1.items()))
 x=[]
 y=[]
@@ -45,7 +46,6 @@ s = dict.keys()
 first_occ = {dict[key][0]:key for key in dict.keys()}
 print first_occ.keys()
 
-import collections
 od = collections.OrderedDict(sorted(first_occ.items()))
 print od.keys()
     
@@ -67,14 +67,6 @@ import numpy as np
 xtic = np.unique(np.array(x)).tolist()
 
 plt.plot(x,y,'ro')
-##plt.axis([0,len(key.split(" "))+1, 0,len(doc)+1])
 plt.xticks(xtic,od.values(),rotation='vertical')
 plt.show()
 
-
-
-##
-##temp=[]
-##for i in range(0,len(y)):
-##    temp.append((x[i],y[i]))
-####    print temp
