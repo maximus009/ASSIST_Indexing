@@ -1,6 +1,6 @@
 import matplotlib.pyplot as plt
 import collections
-from data import Test as dict1
+#from data import Test as dict1
 from data import Google as dict1
 from collections import defaultdict
 from collections import OrderedDict
@@ -23,8 +23,7 @@ def sort_by_n_occurence(dict, N):
 #first_occ = {dict[key][0]:key for key in dict.keys()}
 first_occ = sort_by_n_occurence(dict, 0)
 od = collections.OrderedDict(sorted(first_occ.items()))
-print od
-print j
+#print od
 IND = []
 L = 0
 
@@ -74,13 +73,13 @@ def buildbuck(l,j,vals):
                     countx=countx+1
                     gau=0
     print "\n"     
-    print "Printing the sorted y values"
+#    print "Printing the sorted y values"
     for i in xrect:
         strbuild(i,1)
         
 
 def pgm(a):
-    print "--===========================--"   
+#    print "--===========================--"   
 
     if len(a)>13:
         strbuild(a,0)
@@ -89,16 +88,16 @@ def pgm(a):
  
 def strbuild(main,i):
     if i==0:
-        print "Printing the sorted x values"
+#        print "Printing the sorted x values"
         cents=defaultdict(list)  
         for l in main:
             cents[(l[0][0]+l[1][0])/2.0].append(l)
             OrderedDict(sorted(cents.items(), key=lambda t: t[0]))
-        print "C:",cents
+#        print "C:",cents
         print
         vals=cents.values()
         vals = [val for subl in vals for val in subl] 
-        print vals
+#        print vals
         calc(vals)
     else:
         #print "\n\nPrinting the sorted y values"
@@ -109,13 +108,13 @@ def strbuild(main,i):
        # print "this is centy  :",centy
         
         valy=centy.values()
-        print "----------------------"
+#        print "----------------------"
         valy = [val for subl in valy for val in subl]# for t in val]    
         
-        print valy
+#        print valy
         pgm(valy)
 print "---==============================================---"
-#pgm(final)
+pgm(final)
 xtic = np.unique(np.array(x)).tolist()
 
 plt.plot(x,y,'ro')

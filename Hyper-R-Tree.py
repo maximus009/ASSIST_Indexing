@@ -12,28 +12,32 @@ def sort_by_n_occurence(dict, N):
             continue
     return sortedDict
 
+fileChar = 1
 def plot(x,y, od):
+    global fileChar
+    f = plt.figure()
     xtic = unique(array(x)).tolist()
-    plt.plot(x,y,'ro')
+    plt.plot(x,y,'bo')
     plt.xticks(xtic,od.values(),rotation='vertical')
+    plt.savefig(str(fileChar)+'.png')
+    fileChar+=1
     plt.show()
 
-
-def something(dict, originalDict):
+def create_plot_data(dict, originalDict):
     od = OrderedDict(sorted(dict.items()))
-    print od
     IND,x,y= [],[],[]
     keyWordID = 0
-    print od.keys()
+    keyMap = {}
     for first_val in od.keys():
         k = od[first_val]
+        keyMap[keyWordID]=k
         for i in originalDict[k]:
             IND.append((keyWordID,i))
             x.append(keyWordID)
             y.append(i)
         keyWordID+=1
-    plot(x,y,od)
-    return IND
+#    plot(x,y,od)
+    return IND,keyMap
 
 
 def duplicate():
@@ -48,12 +52,22 @@ def duplicate():
             d=d+1
         final.append(tups)
     
-if __name__=="__main__":
+def main():
     myDict = Google
     sortedByOccurences = []
     INDS = []
-    for n in range(1,10):
+    maxOccurences = max([len(myDict[key]) for key in myDict])
+    keyMaps = []
+    for n in range(1,5):
         originalDict = OrderedDict(sorted(myDict.items()))
         dict = sort_by_n_occurence(myDict, n)
         sortedByOccurences.append(dict)
-        INDS.append(something(dict, originalDict))
+        plotData,keyMap = create_plot_data(dict,originalDict)
+        INDS.append(plotData)
+        keyMaps.append(keyMap)
+        break
+    print keyMaps
+    for i in INDS:
+        print i
+
+main()
